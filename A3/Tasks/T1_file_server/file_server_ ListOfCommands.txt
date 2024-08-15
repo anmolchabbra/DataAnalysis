@@ -1,0 +1,247 @@
+Commands used to build server
+
+1) docker pull python
+2) docker run --name Assignment01_server1 --mount type=bind,source=C:\Users\nalin\Downloads\anmol_chabbra_40221995_A1\Server,
+target=/DS_COMP6231 --shm-size 2GB -it python bash
+3) Inside Assignment01_server1 container bash commands
+	a) apt-get update
+	b) apt-get install nano net-tools iputils-ping
+	c) ifconfig (Copy IP address)
+	d) cd DS_COMP6231
+	e) ls -a
+	f) nano server.py (Change HOST field to container IP address)
+	g) Ctrl + X to exit
+	h) Save by pressing y and then press Enter
+	j) python3 server.py
+	k) Ctrl + P and then Ctrl + Q
+4) docker commit Assignment01_server1 t1_clientserver_img
+
+
+_______________________________________________________________________________________________________________________________________________________
+Commands used to build client_1
+
+1) docker run --name Assignment1_client1 --mount type=bind,source=C:\Users\nalin\Downloads\anmol_chabbra_40221995_A1\Client_01,target=/DS_COMP6231 --shm-size 2GB -it t1_clientserver_img /bin/bash
+2) Inside Assignment1_client1 container bash commands
+	a) ls -a
+	b) cd DS_COMP6231
+	c) ls -a
+	d) nano client.py (Change HOST field to server container IP address)
+	e) Ctrl + X to exit
+	f) Save by pressing y and then press Enter
+	g) python3 client.py
+	
+	
+
+________________________________________________________________________________________________________________________________________________________________
+Commands used to build client_2
+
+1) docker run --name Assignment1_client2 --mount type=bind,source=C:\Users\nalin\Downloads\anmol_chabbra_40221995_A1\Client_02,target=/DS_COMP6231 --shm-size 2GB -it t1_clientserver_img /bin/bash
+2) Inside Assignment1_client2 container bash commands
+	a) ls -a
+	b) cd DS_COMP6231
+	c) ls -a
+	d) nano client.py (Change HOST field to server container IP address)
+	e) Ctrl + X to exit
+	f) Save by pressing y and then press Enter
+	g) python3 client.py
+
+_____________________________________________________________________________________________________________________________________________________________________
+Commands used to build client_3
+
+1) docker run --name Assignment1_client3 --mount type=bind,source=C:\Users\nalin\Downloads\anmol_chabbra_40221995_A1\Client_03,target=/DS_COMP6231 --shm-size 2GB -it t1_clientserver_img /bin/bash
+2) Inside Assignment1_client3 container bash commands
+	a) ls -a
+	b) cd DS_COMP6231
+	c) ls -a
+	d) nano client.py (Change HOST field to server container IP address)
+	e) Ctrl + X to exit
+	f) Save by pressing y and then press Enter
+	g) python3 client.py
+	
+	
+________________________________________________________________________________________________________________________________________________________________
+IP/Ports used in each container and the shared storage paths
+
+1)	IP address and ports used
+	Server: 172.17.0.2, Port: 654232
+
+2)	Shared Storage paths
+	Server: C:\Users\nalin\Downloads\anmol_chabbra_40221995_A1\Server
+    Client1: C:\Users\nalin\Downloads\anmol_chabbra_40221995_A1\Client_01
+    Client2: C:\Users\nalin\Downloads\anmol_chabbra_40221995_A1\Client_02
+    Client3: C:\Users\nalin\Downloads\anmol_chabbra_40221995_A1\Client_03
+	
+	
+________________________________________________________________________________________________________________________________________________________________
+logs from server
+
+PS C:\Users\nalin> docker run --name Assignment01_server1 --mount type=bind,source=C:\Users\nalin\Downloads\anmol_chabbra_40221995_A1\Server,target=/DS_COMP6231 --shm-size 2GB -it python bash
+root@4af735ff1305:/# ls
+DS_COMP6231  bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@4af735ff1305:/# cd DS_COMP6231
+root@4af735ff1305:/DS_COMP6231# ls
+server.py
+root@4af735ff1305:/DS_COMP6231# cd ..
+root@4af735ff1305:/# apt-get update
+Get:1 http://deb.debian.org/debian bullseye InRelease [116 kB]
+Get:2 http://deb.debian.org/debian-security bullseye-security InRelease [48.4 kB]
+Get:3 http://deb.debian.org/debian bullseye-updates InRelease [44.1 kB]
+Get:4 http://deb.debian.org/debian bullseye/main amd64 Packages [8184 kB]
+Get:5 http://deb.debian.org/debian-security bullseye-security/main amd64 Packages [204 kB]
+Get:6 http://deb.debian.org/debian bullseye-updates/main amd64 Packages [14.6 kB]
+Fetched 8610 kB in 3s (3324 kB/s)
+Reading package lists... Done
+root@4af735ff1305:/# apt-get install nano net-tools iputils-ping
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  libcap2 libcap2-bin libpam-cap
+Suggested packages:
+  hunspell
+The following NEW packages will be installed:
+  iputils-ping libcap2 libcap2-bin libpam-cap nano net-tools
+0 upgraded, 6 newly installed, 0 to remove and 17 not upgraded.
+Need to get 1027 kB of archives.
+After this operation, 3954 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://deb.debian.org/debian bullseye/main amd64 libcap2 amd64 1:2.44-1 [23.6 kB]
+Get:2 http://deb.debian.org/debian bullseye/main amd64 libcap2-bin amd64 1:2.44-1 [32.6 kB]
+Get:3 http://deb.debian.org/debian bullseye/main amd64 iputils-ping amd64 3:20210202-1 [49.8 kB]
+Get:4 http://deb.debian.org/debian bullseye/main amd64 nano amd64 5.4-2+deb11u1 [656 kB]
+Get:5 http://deb.debian.org/debian bullseye/main amd64 libpam-cap amd64 1:2.44-1 [15.4 kB]
+Get:6 http://deb.debian.org/debian bullseye/main amd64 net-tools amd64 1.60+git20181103.0eebece-1 [250 kB]
+Fetched 1027 kB in 0s (3903 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package libcap2:amd64.
+(Reading database ... 23422 files and directories currently installed.)
+Preparing to unpack .../0-libcap2_1%3a2.44-1_amd64.deb ...
+Unpacking libcap2:amd64 (1:2.44-1) ...
+Selecting previously unselected package libcap2-bin.
+Preparing to unpack .../1-libcap2-bin_1%3a2.44-1_amd64.deb ...
+Unpacking libcap2-bin (1:2.44-1) ...
+Selecting previously unselected package iputils-ping.
+Preparing to unpack .../2-iputils-ping_3%3a20210202-1_amd64.deb ...
+Unpacking iputils-ping (3:20210202-1) ...
+Selecting previously unselected package nano.
+Preparing to unpack .../3-nano_5.4-2+deb11u1_amd64.deb ...
+Unpacking nano (5.4-2+deb11u1) ...
+Selecting previously unselected package libpam-cap:amd64.
+Preparing to unpack .../4-libpam-cap_1%3a2.44-1_amd64.deb ...
+Unpacking libpam-cap:amd64 (1:2.44-1) ...
+Selecting previously unselected package net-tools.
+Preparing to unpack .../5-net-tools_1.60+git20181103.0eebece-1_amd64.deb ...
+Unpacking net-tools (1.60+git20181103.0eebece-1) ...
+Setting up net-tools (1.60+git20181103.0eebece-1) ...
+Setting up libcap2:amd64 (1:2.44-1) ...
+Setting up libcap2-bin (1:2.44-1) ...
+Setting up nano (5.4-2+deb11u1) ...
+update-alternatives: using /bin/nano to provide /usr/bin/editor (editor) in auto mode
+update-alternatives: using /bin/nano to provide /usr/bin/pico (pico) in auto mode
+Setting up libpam-cap:amd64 (1:2.44-1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 78.)
+debconf: falling back to frontend: Readline
+Setting up iputils-ping (3:20210202-1) ...
+Processing triggers for libc-bin (2.31-13+deb11u5) ...
+root@4af735ff1305:/# ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.2  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 02:42:ac:11:00:02  txqueuelen 0  (Ethernet)
+        RX packets 6665  bytes 10006179 (9.5 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 4067  bytes 221842 (216.6 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+root@4af735ff1305:/# cd DS_COMP6231
+root@4af735ff1305:/DS_COMP6231# nano server.py
+root@4af735ff1305:/DS_COMP6231# python3 server.py
+PS C:\Users\nalin> docker commit Assignment01_server1 assignment1_img
+sha256:033f446aeb08c2488a7247550ba9c970eee268a1100fc54eb197413610bb2e8b
+
+_______________________________________________________________________________________________________________________________________________________
+Logs from Client1
+
+C:\Users\nalin>docker run --name Assignment1_client1 --mount type=bind,source=C:\Users\nalin\Downloads\anmol_chabbra_40221995_A1\Client_01,target=/DS_COMP6231 --shm-size 2GB -it t1_clientserver_img /bin/bash
+root@be36936b3bf7:/# ls -a
+.   .dockerenv   bin   dev  home  lib64  mnt  proc  run   srv  testFolder  usr
+..  DS_COMP6231  boot  etc  lib   media  opt  root  sbin  sys  tmp         var
+root@be36936b3bf7:/# cd DS_COMP6231
+root@be36936b3bf7:/DS_COMP6231# ls -a
+.  ..  client.py  orca.jpg
+root@be36936b3bf7:/DS_COMP6231# nano client.py
+root@be36936b3bf7:/DS_COMP6231# python3 client.py
+Connected to server at IP: 172.17.0.2 and Port: 65432
+Handshake Done. EOF is: <7VRACyu1>
+Current Directory: /DS_COMP6231:
+|
+--
+-- server.py
+-- taco_bell.mp3
+ul orca.jpg
+Current Directory: /DS_COMP6231:
+|
+-- anmol
+-- server.py
+-- taco_bell.mp3
+-- orca.jpg
+________________________________________________________________________________________________________________________________________________________________
+logs from Client2
+
+C:\Users\nalin>docker run --name Assignment1_client2 --mount type=bind,source=C:\Users\nalin\Downloads\anmol_chabbra_40221995_A1\Client_02,target=/DS_COMP6231 --shm-size 2GB -it t1_clientserver_img /bin/bash
+root@d57c3d1402d6:/# ls -a
+.   .dockerenv   bin   dev  home  lib64  mnt  proc  run   srv  testFolder  usr
+..  DS_COMP6231  boot  etc  lib   media  opt  root  sbin  sys  tmp         var
+root@d57c3d1402d6:/# cd DS_COMP6231
+root@d57c3d1402d6:/DS_COMP6231# ls -a
+.  ..  client.py  jellyfish.jpg  orca.jpg
+root@d57c3d1402d6:/DS_COMP6231# nano client.py
+root@d57c3d1402d6:/DS_COMP6231# python3 client.py
+Connected to server at IP: 172.17.0.2 and Port: 65432
+Handshake Done. EOF is: <MRzhSj7M>
+Current Directory: /DS_COMP6231:
+|
+--
+-- server.py
+-- taco_bell.mp3
+mkdir anmol
+Current Directory: /DS_COMP6231:
+|
+-- anmol
+-- server.py
+-- taco_bell.mp3
+
+_______________________________________________________________________________________________________________________________________________________
+logs from Client3
+
+C:\Users\nalin>docker run --name Assignment1_client3 --mount type=bind,source=C:\Users\nalin\Downloads\anmol_chabbra_40221995_A1\Client_03,
+invalid argument "type=bind,source=C:\\Users\\nalin\\Downloads\\anmol_chabbra_40221995_A1\\Client_03," for "--mount" flag: invalid field '' must be a key=value pair
+See 'docker run --help'.
+
+C:\Users\nalin>docker run --name Assignment1_client3 --mount type=bind,source=C:\Users\nalin\Downloads\anmol_chabbra_40221995_A1\Client_03,target=/DS_COMP6231 --shm-size 2GB -it t1_clientserver_img /bin/bash
+root@2225c8943783:/# ls -a
+.   .dockerenv   bin   dev  home  lib64  mnt  proc  run   srv  testFolder  usr
+..  DS_COMP6231  boot  etc  lib   media  opt  root  sbin  sys  tmp         var
+root@2225c8943783:/# cd DS_COMP6231
+root@2225c8943783:/DS_COMP6231# nano client.py
+root@2225c8943783:/DS_COMP6231# python3 client.py
+Connected to server at IP: 172.17.0.2 and Port: 65432
+Handshake Done. EOF is: <8eEXZJje>
+Current Directory: /DS_COMP6231:
+|
+-- anmol
+-- server.py
+-- taco_bell.mp3
+cd anmol
+Current Directory: /DS_COMP6231/anmol:
+|
+--
+--

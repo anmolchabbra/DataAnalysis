@@ -1,0 +1,936 @@
+Commands for creating master Node
+
+1) docker pull husseinabdallah2/mpi4py-cluster:master
+2) docker run --name t2_node0 --mount type=bind,source=C:\Users\nalin\Desktop\Assignment_2\implementation,target=/COMP6231 -it 
+husseinabdallah2/mpi4py-cluster:master bash
+3) Inside t2_node0 bash commands
+	a) passwd
+	b) apt-get update
+	c) apt-get install nano net-tools iputils-ping openssh-client openssh-server
+	d) service ssh start
+	e) service ssh stop
+	f) ifconfig
+	g) ssh root@172.17.0.5
+	h) yes
+	i) exit
+	j) ssh root@172.17.0.6
+	k) yes
+	l) exit
+	m) ssh root@172.17.0.7
+	n) yes
+	p) exit
+	q) cd ~/
+	r) nano machinefile
+	s) ssh-keygen -t rsa
+	t) y
+	u) ssh-copy-id -i ~/.ssh/id_rsa.pub root@172.17.0.5
+	v) ssh-copy-id -i ~/.ssh/id_rsa.pub root@172.17.0.6
+	w) ssh-copy-id -i ~/.ssh/id_rsa.pub root@172.17.0.7
+	x) eval 'ssh-agent
+	y) cd COMP6231
+	z) cd Q1
+	mpiexec -n 4 -machinefile ~/machinefile python -m mpi4py T3.py
+	 
+	
+	
+___________________________________________________________________________________________________________________________________________________________________________________
+Commands for creating worker node 1
+
+1) docker run --name t2_node1 --mount type=bind,source=C:\Users\nalin\Desktop\Assignment_2\implementation,target=/COMP6231 -it husseinabdallah2/mpi4py-cluster:master bash
+2) Inside t2_node1 bash commands:
+	a) apt-get update
+	b) apt-get install nano net-tools iputils-ping openssh-client openssh-server
+	c) ifconfig
+	d) passwd
+	e) service ssh start
+	
+____________________________________________________________________________________________________________________________________________________________________________________
+Commands for creating worker node 2
+
+1) docker run --name t2_node2 --mount type=bind,source=C:\Users\nalin\Desktop\Assignment_2\implementation,target=/COMP6231 -it husseinabdallah2/mpi4py-cluster:master bash
+2) Inside t2_node2 bash commands:
+	a) apt-get update
+	b) apt-get install nano net-tools iputils-ping openssh-client openssh-server
+	c) ifconfig
+	d) passwd
+	e) service ssh start
+
+____________________________________________________________________________________________________________________________________________________________________________________
+Commands for creating worker node 3
+
+1) docker run --name t2_node3 --mount type=bind,source=C:\Users\nalin\Desktop\Assignment_2\implementation,target=/COMP6231 -it husseinabdallah2/mpi4py-cluster:master bash
+2) Inside t3_node1 bash commands:
+	a) apt-get update
+	b) apt-get install nano net-tools iputils-ping openssh-client openssh-server
+	c) ifconfig
+	d) passwd
+	e) service ssh start
+	
+__________________________________________________________________________________________________________________________________________________________________________________________
+IP/Ports used in each container and the shared storage paths
+
+IP/Ports used in each container and the shared storage paths
+
+1)	IP address of containers:
+	Master: 172.17.0.2
+	Worker1:
+	Worker2:
+	Worker3:
+	Worker4:
+	
+2)	Shared Storage paths
+	C:\Users\nalin\Desktop\Assignment_2\implementation
+__________________________________________________________________________________________________________________________________________________________________________________________
+Logs of Master (Node_0)
+
+PS C:\Users\nalin> docker attach 00c37e68c10fcb79348884767e27237eaa42d19ad9cf43553732b8ed58cdce58
+root@00c37e68c10f:/# ssh root@172.17.0.5
+ssh: connect to host 172.17.0.5 port 22: Connection refused
+root@00c37e68c10f:/# ssh root@172.17.0.5
+The authenticity of host '172.17.0.5 (172.17.0.5)' can't be established.
+ECDSA key fingerprint is SHA256:Sb7YRN1066NNPdEdoQLXTA4r5IUTIC+XrRRlddjoWzs.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '172.17.0.5' (ECDSA) to the list of known hosts.
+root@172.17.0.5's password:
+Permission denied, please try again.
+root@172.17.0.5's password:
+Permission denied, please try again.
+root@172.17.0.5's password:
+Welcome to Ubuntu 20.04 LTS (GNU/Linux 5.10.102.1-microsoft-standard-WSL2 x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+Last login: Mon Oct 17 17:00:04 2022 from 172.17.0.9
+root@7c364b8011cc:~# exit
+logout
+Connection to 172.17.0.5 closed.
+root@00c37e68c10f:/# ssh root@172.17.0.6
+ssh: connect to host 172.17.0.6 port 22: Connection refused
+root@00c37e68c10f:/# ssh root@172.17.0.6
+The authenticity of host '172.17.0.6 (172.17.0.6)' can't be established.
+ECDSA key fingerprint is SHA256:Sb7YRN1066NNPdEdoQLXTA4r5IUTIC+XrRRlddjoWzs.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '172.17.0.6' (ECDSA) to the list of known hosts.
+root@172.17.0.6's password:
+Welcome to Ubuntu 20.04 LTS (GNU/Linux 5.10.102.1-microsoft-standard-WSL2 x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+Last login: Mon Oct 17 17:00:04 2022 from 172.17.0.9
+root@01dae4cb5d56:~# exit
+logout
+Connection to 172.17.0.6 closed.
+root@00c37e68c10f:/# ssh root@172.17.0.7
+root@172.17.0.7's password:
+Welcome to Ubuntu 20.04 LTS (GNU/Linux 5.10.102.1-microsoft-standard-WSL2 x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+Last login: Mon Oct 17 17:00:04 2022 from 172.17.0.9
+root@edc17570e168:~# exit
+logout
+Connection to 172.17.0.7 closed.
+root@00c37e68c10f:/# cd ~/
+root@00c37e68c10f:~# ls
+machinefile
+root@00c37e68c10f:~# nano machinefile
+root@00c37e68c10f:~# ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa):
+/root/.ssh/id_rsa already exists.
+Overwrite (y/n)? y
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /root/.ssh/id_rsa
+Your public key has been saved in /root/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:y0KidASiBOKGu6xXhyB7eeV2DcSsRq8y/c9WZVYZB7o root@00c37e68c10f
+The key's randomart image is:
++---[RSA 3072]----+
+|=..    o      .o+|
+|*. .  . +    . .o|
+|oo  .. +    .  . |
+|o...  + o    .+  |
+|.o.oo*..So  E+   |
+|oooo*o*.... .    |
+|.o.o =.oo  .     |
+|. .    ....      |
+|..       oo      |
++----[SHA256]-----+
+root@00c37e68c10f:~# ssh-copy-id -i ~/.ssh/id_rsa.pub root@172.17.0.5
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/root/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+root@172.17.0.5's password:
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'root@172.17.0.5'"
+and check to make sure that only the key(s) you wanted were added.
+
+root@00c37e68c10f:~# ssh-copy-id -i ~/.ssh/id_rsa.pub root@172.17.0.6
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/root/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+root@172.17.0.6's password:
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'root@172.17.0.6'"
+and check to make sure that only the key(s) you wanted were added.
+
+root@00c37e68c10f:~# ssh-copy-id -i ~/.ssh/id_rsa.pub root@172.17.0.7
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/root/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+root@172.17.0.7's password:
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'root@172.17.0.7'"
+and check to make sure that only the key(s) you wanted were added.
+
+root@00c37e68c10f:~# eval 'ssh-agent'
+SSH_AUTH_SOCK=/tmp/ssh-M8KmdwcxNYmP/agent.474; export SSH_AUTH_SOCK;
+SSH_AGENT_PID=475; export SSH_AGENT_PID;
+echo Agent pid 475;
+root@00c37e68c10f:~# ls -a
+.  ..  .bash_history  .bashrc  .cache  .local  .profile  .ssh  machinefile
+root@00c37e68c10f:~# cd /
+root@00c37e68c10f:/# ls -a
+.  ..  .dockerenv  COMP6231  DS_COMP6231  bin  boot  cloud  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@00c37e68c10f:/# cd COMP6231
+root@00c37e68c10f:/COMP6231# ls
+Q1  Q2  Q3  Q4
+root@00c37e68c10f:/COMP6231# cd ..
+root@00c37e68c10f:/# ls
+COMP6231  DS_COMP6231  bin  boot  cloud  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@00c37e68c10f:/# cd COMP6231/
+root@00c37e68c10f:/COMP6231# ls
+Combined_Flights_2021.csv  Q1  Q2  Q3  Q4
+root@00c37e68c10f:/COMP6231# cd Q1
+root@00c37e68c10f:/COMP6231/Q1# ls
+T1.py  T2.py  T3.py
+root@00c37e68c10f:/COMP6231/Q1# mpiexec -n 3 -machinefile ~/machinefile python -m mpi4py T3.py
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 368 RUNNING AT 172.17.0.5
+=   EXIT CODE: 9
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+[proxy:0:0@00c37e68c10f] HYD_pmcd_pmip_control_cmd_cb (pm/pmiserv/pmip_cb.c:878): assert (!closed) failed
+[proxy:0:0@00c37e68c10f] HYDT_dmxu_poll_wait_for_event (tools/demux/demux_poll.c:77): callback returned error status
+[proxy:0:0@00c37e68c10f] main (pm/pmiserv/pmip.c:200): demux engine error waiting for event
+[mpiexec@00c37e68c10f] HYDT_bscu_wait_for_completion (tools/bootstrap/utils/bscu_wait.c:74): one of the processes terminated badly; aborting
+[mpiexec@00c37e68c10f] HYDT_bsci_wait_for_completion (tools/bootstrap/src/bsci_wait.c:22): launcher returned error waiting for completion
+[mpiexec@00c37e68c10f] HYD_pmci_wait_for_completion (pm/pmiserv/pmiserv_pmci.c:215): launcher returned error waiting for completion
+[mpiexec@00c37e68c10f] main (ui/mpich/mpiexec.c:336): process manager error waiting for completion
+root@00c37e68c10f:/COMP6231/Q1# mpiexec -n 4 -machinefile ~/machinefile python -m mpi4py T3.py
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 393 RUNNING AT 172.17.0.5
+=   EXIT CODE: 9
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+[proxy:0:0@00c37e68c10f] HYD_pmcd_pmip_control_cmd_cb (pm/pmiserv/pmip_cb.c:878): assert (!closed) failed
+[proxy:0:0@00c37e68c10f] HYDT_dmxu_poll_wait_for_event (tools/demux/demux_poll.c:77): callback returned error status
+[proxy:0:0@00c37e68c10f] main (pm/pmiserv/pmip.c:200): demux engine error waiting for event
+[mpiexec@00c37e68c10f] HYDT_bscu_wait_for_completion (tools/bootstrap/utils/bscu_wait.c:74): one of the processes terminated badly; aborting
+[mpiexec@00c37e68c10f] HYDT_bsci_wait_for_completion (tools/bootstrap/src/bsci_wait.c:22): launcher returned error waiting for completion
+[mpiexec@00c37e68c10f] HYD_pmci_wait_for_completion (pm/pmiserv/pmiserv_pmci.c:215): launcher returned error waiting for completion
+[mpiexec@00c37e68c10f] main (ui/mpich/mpiexec.c:336): process manager error waiting for completion
+root@00c37e68c10f:/COMP6231/Q1# mpiexec -n 6 -machinefile ~/machinefile python -m mpi4py T3.py 
+Worker 5 is assigned chunk info [None, 5049497] ../Combined_Flights_2021.csv
+Worker slave 5 is done. Sending back to master
+Worker 1 is assigned chunk info [1262374, 1] ../Combined_Flights_2021.csv
+Worker slave 1 is done. Sending back to master
+Worker 2 is assigned chunk info [1262374, 1262375] ../Combined_Flights_2021.csv
+Worker slave 2 is done. Sending back to master
+Worker 3 is assigned chunk info [1262374, 2524749] ../Combined_Flights_2021.csv
+Worker slave 3 is done. Sending back to master
+Worker 4 is assigned chunk info [1262374, 3787123] ../Combined_Flights_2021.csv
+Worker slave 4 is done. Sending back to master
+
+Airlines with most cancelled flights in sep 2021:  Southwest Airlines Co.
+Time taken w : 47.55795454978943
+root@00c37e68c10f:/COMP6231# cd ..
+root@00c37e68c10f:/COMP6231# cd Q2
+root@00c37e68c10f:/COMP6231/Q2# mpiexec -n 6 -machinefile ~/machinefile python -m mpi4py T3.py       
+Worker 5 is assigned chunk info [None, 5049497] ../Combined_Flights_2021.csv
+Worker slave 5 is done. Sending back to master
+Worker 1 is assigned chunk info [1262374, 1] ../Combined_Flights_2021.csv
+Worker slave 1 is done. Sending back to master
+Worker 2 is assigned chunk info [1262374, 1262375] ../Combined_Flights_2021.csv
+Worker slave 2 is done. Sending back to master
+Worker 3 is assigned chunk info [1262374, 2524749] ../Combined_Flights_2021.csv
+Worker slave 3 is done. Sending back to master
+Worker 4 is assigned chunk info [1262374, 3787123] ../Combined_Flights_2021.csv
+Worker slave 4 is done. Sending back to master
+
+Diverted flights bw 20th Nov and 30th Nov 2021:  263
+root@00c37e68c10f:/COMP6231# cd ..
+root@00c37e68c10f:/COMP6231# cd Q3
+root@00c37e68c10f:/COMP6231/Q3# mpiexec -n 6 -machinefile ~/machinefile python -m mpi4py T3.py       
+Worker 5 is assigned chunk info [None, 5049497] ../Combined_Flights_2021.csv
+Worker slave 5 is done. Sending back to master
+Worker 1 is assigned chunk info [1262374, 1] ../Combined_Flights_2021.csv
+Worker slave 1 is done. Sending back to master
+Worker 2 is assigned chunk info [1262374, 1262375] ../Combined_Flights_2021.csv
+Worker slave 2 is done. Sending back to master
+Worker 3 is assigned chunk info [1262374, 2524749] ../Combined_Flights_2021.csv
+Worker slave 3 is done. Sending back to master
+Worker 4 is assigned chunk info [1262374, 3787123] ../Combined_Flights_2021.csv
+Worker slave 4 is done. Sending back to master
+
+ Average time of flights from Nashville to Chicago:  72.73409801876956
+root@00c37e68c10f:/COMP6231# cd ..
+root@00c37e68c10f:/COMP6231# cd Q4
+root@00c37e68c10f:/COMP6231/Q4# mpiexec -n 6 -machinefile ~/machinefile python -m mpi4py T3.py           
+Worker 5 is assigned chunk info [None, 5049497] ../Combined_Flights_2021.csv
+Worker slave 5 is done. Sending back to master
+Worker 1 is assigned chunk info [1262374, 1] ../Combined_Flights_2021.csv
+Worker slave 1 is done. Sending back to master
+Worker 2 is assigned chunk info [1262374, 1262375] ../Combined_Flights_2021.csv
+Worker slave 2 is done. Sending back to master
+Worker 3 is assigned chunk info [1262374, 2524749] ../Combined_Flights_2021.csv
+Worker slave 3 is done. Sending back to master
+Worker 4 is assigned chunk info [1262374, 3787123] ../Combined_Flights_2021.csv
+Worker slave 4 is done. Sending back to master
+
+ Dates for which departure time is not recorded or missing: 
+2021-03-18
+2021-03-25
+2021-03-05
+2021-03-06
+2021-03-23
+2021-03-24
+2021-03-13
+2021-03-14
+2021-03-15
+2021-03-04
+2021-03-19
+2021-03-20
+2021-03-16
+2021-03-17
+2021-03-30
+2021-03-27
+2021-03-11
+2021-03-12
+2021-03-01
+2021-03-08
+2021-03-03
+2021-03-07
+2021-03-26
+2021-03-21
+2021-03-22
+2021-03-28
+2021-03-02
+2021-03-10
+2021-03-29
+2021-03-09
+2021-03-31
+2021-12-12
+2021-12-11
+2021-12-10
+2021-12-09
+2021-12-08
+2021-12-07
+2021-12-06
+2021-12-05
+2021-12-04
+2021-12-03
+2021-12-02
+2021-12-01
+2021-12-18
+2021-12-19
+2021-12-20
+2021-12-13
+2021-12-14
+2021-12-15
+2021-12-16
+2021-12-23
+2021-12-24
+2021-12-25
+2021-12-17
+2021-12-26
+2021-12-27
+2021-12-30
+2021-12-31
+2021-12-21
+2021-12-22
+2021-12-28
+2021-12-29
+2021-04-11
+2021-04-03
+2021-04-04
+2021-04-02
+2021-04-30
+2021-04-23
+2021-04-29
+2021-04-16
+2021-04-15
+2021-04-01
+2021-04-10
+2021-04-24
+2021-04-12
+2021-04-21
+2021-04-22
+2021-04-13
+2021-04-17
+2021-04-14
+2021-04-18
+2021-04-09
+2021-04-19
+2021-04-05
+2021-04-06
+2021-04-07
+2021-04-08
+2021-04-20
+2021-04-26
+2021-04-28
+2021-04-25
+2021-04-27
+2021-11-16
+2021-11-15
+2021-11-14
+2021-11-13
+2021-11-12
+2021-11-11
+2021-11-08
+2021-11-07
+2021-11-04
+2021-11-03
+2021-11-02
+2021-11-01
+2021-11-30
+2021-11-27
+2021-11-24
+2021-11-10
+2021-11-22
+2021-11-25
+2021-11-19
+2021-11-18
+2021-11-20
+2021-11-21
+2021-11-17
+2021-11-09
+2021-11-05
+2021-11-06
+2021-11-29
+2021-11-23
+2021-11-28
+2021-11-26
+2021-09-04
+2021-09-05
+2021-09-06
+2021-09-07
+2021-09-08
+2021-09-09
+2021-09-10
+2021-09-11
+2021-09-23
+2021-09-24
+2021-09-25
+2021-09-01
+2021-09-02
+2021-09-03
+2021-09-19
+2021-09-20
+2021-09-30
+2021-09-26
+2021-09-16
+2021-09-12
+2021-09-29
+2021-09-21
+2021-09-13
+2021-09-27
+2021-09-28
+2021-09-18
+2021-09-14
+2021-09-22
+2021-09-15
+2021-09-17
+2021-01-25
+2021-01-19
+2021-01-31
+2021-01-14
+2021-01-29
+2021-01-08
+2021-01-10
+2021-01-18
+2021-01-05
+2021-01-30
+2021-01-01
+2021-01-15
+2021-01-04
+2021-01-02
+2021-01-21
+2021-01-26
+2021-01-16
+2021-01-11
+2021-01-17
+2021-01-13
+2021-01-24
+2021-01-23
+2021-01-27
+2021-01-22
+2021-01-09
+2021-01-20
+2021-01-28
+2021-01-07
+2021-01-03
+2021-01-12
+2021-01-06
+2021-08-16
+2021-08-28
+2021-08-29
+2021-08-30
+2021-08-31
+2021-08-05
+2021-08-06
+2021-08-07
+2021-08-20
+2021-08-21
+2021-08-09
+2021-08-22
+2021-08-27
+2021-08-01
+2021-08-02
+2021-08-03
+2021-08-04
+2021-08-08
+2021-08-10
+2021-08-11
+2021-08-12
+2021-08-13
+2021-08-14
+2021-08-15
+2021-08-17
+2021-08-18
+2021-08-19
+2021-08-23
+2021-08-24
+2021-08-25
+2021-08-26
+2021-07-02
+2021-07-01
+2021-07-03
+2021-07-10
+2021-07-11
+2021-07-12
+2021-07-19
+2021-07-20
+2021-07-21
+2021-07-28
+2021-07-29
+2021-07-30
+2021-07-04
+2021-07-05
+2021-07-13
+2021-07-14
+2021-07-22
+2021-07-23
+2021-07-31
+2021-07-06
+2021-07-07
+2021-07-15
+2021-07-16
+2021-07-24
+2021-07-25
+2021-07-08
+2021-07-09
+2021-07-17
+2021-07-18
+2021-07-26
+2021-07-27
+2021-05-20
+2021-05-07
+2021-05-21
+2021-05-12
+2021-05-13
+2021-05-01
+2021-05-03
+2021-05-05
+2021-05-06
+2021-05-14
+2021-05-23
+2021-05-28
+2021-05-31
+2021-05-27
+2021-05-09
+2021-05-24
+2021-05-30
+2021-05-16
+2021-05-10
+2021-05-11
+2021-05-18
+2021-05-25
+2021-05-17
+2021-05-04
+2021-05-19
+2021-05-08
+2021-05-26
+2021-05-15
+2021-05-29
+2021-05-02
+2021-05-22
+2021-02-01
+2021-02-15
+2021-02-16
+2021-02-17
+2021-02-19
+2021-02-20
+2021-02-12
+2021-02-18
+2021-02-11
+2021-02-28
+2021-02-13
+2021-02-14
+2021-02-02
+2021-02-27
+2021-02-10
+2021-02-21
+2021-02-03
+2021-02-04
+2021-02-05
+2021-02-23
+2021-02-07
+2021-02-08
+2021-02-09
+2021-02-24
+2021-02-06
+2021-02-22
+2021-02-25
+2021-02-26
+2021-10-14
+2021-10-29
+2021-10-23
+2021-10-15
+2021-10-17
+2021-10-31
+2021-10-25
+2021-10-11
+2021-10-28
+2021-10-08
+2021-10-30
+2021-10-18
+2021-10-13
+2021-10-02
+2021-10-10
+2021-10-12
+2021-10-16
+2021-10-09
+2021-10-27
+2021-10-01
+2021-10-07
+2021-10-26
+2021-10-24
+2021-10-04
+2021-10-22
+2021-10-21
+2021-10-03
+2021-10-19
+2021-10-05
+2021-10-20
+2021-10-06
+2021-06-01
+2021-06-10
+2021-06-11
+2021-06-12
+2021-06-19
+2021-06-20
+2021-06-21
+2021-06-28
+2021-06-29
+2021-06-30
+2021-06-05
+2021-06-06
+2021-06-13
+2021-06-14
+2021-06-15
+2021-06-22
+2021-06-23
+2021-06-24
+2021-06-07
+2021-06-08
+2021-06-16
+2021-06-17
+2021-06-25
+2021-06-26
+2021-06-09
+2021-06-18
+2021-06-27
+2021-06-04
+2021-06-03
+2021-06-02
+
+======================================================================================================================================================
+Logs from Worker Node 1
+PS C:\Users\nalin> docker run --name t2_node1 --mount type=bind,source=C:\Users\nalin\Desktop\Assignment_2\implementation,target=/COMP6231 -it husseinabdallah2/mpi4py-cluster:master bash
+root@7c364b8011cc:/# apt-get update
+Get:1 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Hit:2 http://archive.ubuntu.com/ubuntu focal InRelease
+Get:3 http://archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Get:4 http://archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+Get:5 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [965 kB]
+Get:6 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [27.5 kB]
+Get:7 http://archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [30.2 kB]
+Get:8 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [1712 kB]
+Get:9 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [2312 kB]
+Get:10 http://archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [1829 kB]
+Get:11 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [1262 kB]
+Get:12 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [2781 kB]
+Get:13 http://archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [31.5 kB]
+Get:14 http://archive.ubuntu.com/ubuntu focal-backports/main amd64 Packages [84.3 kB]
+Fetched 11.4 MB in 11s (1043 kB/s)
+Reading package lists... Done
+root@7c364b8011cc:/# apt-get install nano net-tools iputils-ping openssh-client openssh-server
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+nano is already the newest version (4.8-1ubuntu1).
+net-tools is already the newest version (1.60+git20180626.aebd88e-1ubuntu1).
+openssh-client is already the newest version (1:8.2p1-4ubuntu0.5).
+openssh-client set to manually installed.
+openssh-server is already the newest version (1:8.2p1-4ubuntu0.5).
+The following additional packages will be installed:
+  libcap2-bin libpam-cap
+The following NEW packages will be installed:
+  iputils-ping libcap2-bin libpam-cap
+0 upgraded, 3 newly installed, 0 to remove and 97 not upgraded.
+Need to get 74.6 kB of archives.
+After this operation, 275 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://archive.ubuntu.com/ubuntu focal/main amd64 libcap2-bin amd64 1:2.32-1 [26.2 kB]
+Get:2 http://archive.ubuntu.com/ubuntu focal/main amd64 iputils-ping amd64 3:20190709-3 [40.1 kB]
+Get:3 http://archive.ubuntu.com/ubuntu focal/main amd64 libpam-cap amd64 1:2.32-1 [8352 B]
+Fetched 74.6 kB in 1s (103 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package libcap2-bin.
+(Reading database ... 15978 files and directories currently installed.)
+Preparing to unpack .../libcap2-bin_1%3a2.32-1_amd64.deb ...
+Unpacking libcap2-bin (1:2.32-1) ...
+Selecting previously unselected package iputils-ping.
+Preparing to unpack .../iputils-ping_3%3a20190709-3_amd64.deb ...
+Unpacking iputils-ping (3:20190709-3) ...
+Selecting previously unselected package libpam-cap:amd64.
+Preparing to unpack .../libpam-cap_1%3a2.32-1_amd64.deb ...
+Unpacking libpam-cap:amd64 (1:2.32-1) ...
+Setting up libcap2-bin (1:2.32-1) ...
+Setting up libpam-cap:amd64 (1:2.32-1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76.)
+debconf: falling back to frontend: Readline
+Setting up iputils-ping (3:20190709-3) ...
+root@7c364b8011cc:/# ifconfig
+root@01dae4cb5d56:/#
+        inet 172.17.0.5  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 02:42:ac:11:00:05  txqueuelen 0  (Ethernet)
+        RX packets 7908  bytes 11876431 (11.8 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 4253  bytes 233854 (233.8 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+root@7c364b8011cc:/#
+PS C:\Users\nalin> docker run --name t2_node2 --mount type=bind,source=C:\Users\nalin\Desktop\Assignment_2\implementation,target=/COMP6231 -it husseinabdallah2/mpi4py-cluster:master bash
+root@01dae4cb5d56:/# apt-get update
+Hit:1 http://archive.ubuntu.com/ubuntu focal InRelease
+Get:2 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Get:3 http://archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Get:4 http://archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+Get:5 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [1262 kB]
+Get:6 http://archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [30.2 kB]
+Get:7 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [2312 kB]
+Get:8 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [27.5 kB]
+Get:9 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [965 kB]
+Get:10 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [2781 kB]
+Get:11 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [1712 kB]
+Get:12 http://archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [1829 kB]
+Get:13 http://archive.ubuntu.com/ubuntu focal-backports/main amd64 Packages [84.3 kB]
+Get:14 http://archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [31.5 kB]
+Fetched 11.4 MB in 11s (1038 kB/s)
+Reading package lists... Done
+root@01dae4cb5d56:/# ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.6  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 02:42:ac:11:00:06  txqueuelen 0  (Ethernet)
+        RX packets 7847  bytes 11797456 (11.7 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 4633  bytes 253850 (253.8 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+root@01dae4cb5d56:/# passwd
+New password:
+Retype new password:
+passwd: password updated successfully
+root@01dae4cb5d56:/# service ssh start
+ * Starting OpenBSD Secure Shell server sshd
+===================================================================================================================================================
+Logs from Worker Node 2
+PS C:\Users\nalin> docker run --name t2_node2 --mount type=bind,source=C:\Users\nalin\Desktop\Assignment_2\implementation,target=/COMP6231 -it husseinabdallah2/mpi4py-cluster:master bash
+root@01dae4cb5d56:/# apt-get update
+Hit:1 http://archive.ubuntu.com/ubuntu focal InRelease
+Get:2 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Get:3 http://archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Get:4 http://archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+Get:5 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [1262 kB]
+Get:6 http://archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [30.2 kB]
+Get:7 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [2312 kB]
+Get:8 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [27.5 kB]
+Get:9 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [965 kB]
+Get:10 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [2781 kB]
+Get:11 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [1712 kB]
+Get:12 http://archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [1829 kB]
+Get:13 http://archive.ubuntu.com/ubuntu focal-backports/main amd64 Packages [84.3 kB]
+Get:14 http://archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [31.5 kB]
+Fetched 11.4 MB in 11s (1038 kB/s)
+Reading package lists... Done
+root@01dae4cb5d56:/# ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.6  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 02:42:ac:11:00:06  txqueuelen 0  (Ethernet)
+        RX packets 7847  bytes 11797456 (11.7 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 4633  bytes 253850 (253.8 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+root@01dae4cb5d56:/# passwd
+New password:
+Retype new password:
+passwd: password updated successfully
+root@01dae4cb5d56:/# service ssh start
+ * Starting OpenBSD Secure Shell server sshd
+==================================================================================================================================================================
+Logs from Worker Node3
+PS C:\Users\nalin> docker run --name t2_node3 --mount type=bind,source=C:\Users\nalin\Desktop\Assignment_2\implementation,target=/COMP6231 -it husseinabdallah2/mpi4py-cluster:master bash
+root@edc17570e168:/# apt-get update
+Hit:1 http://archive.ubuntu.com/ubuntu focal InRelease
+Get:2 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Get:3 http://archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Get:4 http://archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+Get:5 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [965 kB]
+Get:6 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [1262 kB]
+Get:7 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [2312 kB]
+Get:8 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [2781 kB]
+Get:9 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [1712 kB]
+Get:10 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [27.5 kB]
+Get:11 http://archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [1829 kB]
+Get:12 http://archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [30.2 kB]
+Get:13 http://archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [31.5 kB]
+Get:14 http://archive.ubuntu.com/ubuntu focal-backports/main amd64 Packages [84.3 kB]
+Fetched 11.4 MB in 4s (2670 kB/s)
+Reading package lists... Done
+root@edc17570e168:/# apt-get install nano net-tools iputils-ping openssh-client openssh-server
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+nano is already the newest version (4.8-1ubuntu1).
+net-tools is already the newest version (1.60+git20180626.aebd88e-1ubuntu1).
+openssh-client is already the newest version (1:8.2p1-4ubuntu0.5).
+openssh-client set to manually installed.
+openssh-server is already the newest version (1:8.2p1-4ubuntu0.5).
+The following additional packages will be installed:
+  libcap2-bin libpam-cap
+The following NEW packages will be installed:
+  iputils-ping libcap2-bin libpam-cap
+0 upgraded, 3 newly installed, 0 to remove and 97 not upgraded.
+Need to get 74.6 kB of archives.
+After this operation, 275 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://archive.ubuntu.com/ubuntu focal/main amd64 libcap2-bin amd64 1:2.32-1 [26.2 kB]
+Get:2 http://archive.ubuntu.com/ubuntu focal/main amd64 iputils-ping amd64 3:20190709-3 [40.1 kB]
+Get:3 http://archive.ubuntu.com/ubuntu focal/main amd64 libpam-cap amd64 1:2.32-1 [8352 B]
+Fetched 74.6 kB in 0s (314 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package libcap2-bin.
+(Reading database ... 15978 files and directories currently installed.)
+Preparing to unpack .../libcap2-bin_1%3a2.32-1_amd64.deb ...
+Unpacking libcap2-bin (1:2.32-1) ...
+Selecting previously unselected package iputils-ping.
+Preparing to unpack .../iputils-ping_3%3a20190709-3_amd64.deb ...
+Unpacking iputils-ping (3:20190709-3) ...
+Selecting previously unselected package libpam-cap:amd64.
+Preparing to unpack .../libpam-cap_1%3a2.32-1_amd64.deb ...
+Unpacking libpam-cap:amd64 (1:2.32-1) ...
+Setting up libcap2-bin (1:2.32-1) ...
+Setting up libpam-cap:amd64 (1:2.32-1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76.)
+debconf: falling back to frontend: Readline
+Setting up iputils-ping (3:20190709-3) ...
+root@edc17570e168:/# ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.7  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 02:42:ac:11:00:07  txqueuelen 0  (Ethernet)
+        RX packets 7906  bytes 11876301 (11.8 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 4262  bytes 234352 (234.3 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+root@edc17570e168:/# passwd
+New password:
+Retype new password:
+passwd: password updated successfully
+root@edc17570e168:/# service ssh start
+
+
+
+	
+
